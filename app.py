@@ -12,12 +12,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 app.secret_key = "lfhasdlkjfhuiofydsonafusdiahfsdnlfsduinuiasdfh"
 api = Api(app)
 
-
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 jwt = JWT(app, authenticate, identity)  # /auth
 
 if __name__ == "__main__":
