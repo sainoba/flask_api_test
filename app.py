@@ -14,12 +14,14 @@ api = Api(app)
 
 jwt = JWT(app, authenticate, identity)  # /auth
 
+
+api.add_resource(Store, "/store/<string:name>")  # http://127.0.0.1:5000/store/waltmart
+api.add_resource(Item, "/item/<string:name>")  # http://127.0.0.1:5000/item/Carpet
+api.add_resource(ItemsList, "/items")  # http://127.0.0.1:5000/items
+api.add_resource(StoreList, "/stores")  # http://127.0.0.1:5000/stores
+api.add_resource(UserRegister, "/register")  # http://127.0.0.1:5000/register
+
 if __name__ == "__main__":
     from db import db
     db.init_app(app)
-    api.add_resource(Item, "/item/<string:name>")  # http://127.0.0.1:5000/item/Carpet
-    api.add_resource(ItemsList, "/items")  # http://127.0.0.1:5000/items
-    api.add_resource(UserRegister, "/register")  # http://127.0.0.1:5000/register
-    api.add_resource(Store, "/store/<string:name>")  # http://127.0.0.1:5000/store/waltmart
-    api.add_resource(StoreList, "/stores")  # http://127.0.0.1:5000/stores
     app.run(port=5000, debug=True)
